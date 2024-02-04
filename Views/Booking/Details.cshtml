@@ -1,0 +1,103 @@
+@model FlightBooking.Models.DetailedViewModel
+
+@{
+    ViewData["Title"] = "Booking Details";
+}
+
+<h1>Booking Details</h1>
+
+<div>
+    <h4>Your Booking details</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DetailBooking.BookingId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DetailBooking.BookingId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DetailBooking.Flight.AirlineName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DetailBooking.Flight.AirlineName)
+        </dd>
+        <dt class = "col-sm-2">
+            Destination Airport
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DetailBooking.Flight.ArrivalAirport.AirportName)
+        </dd>
+        <dt class = "col-sm-2">
+            Destination City
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DetailBooking.Flight.ArrivalAirport.City)
+        </dd>
+        <dt class = "col-sm-2">
+            Destination Country
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DetailBooking.Flight.ArrivalAirport.Country)
+        </dd>
+        <dt class = "col-sm-2">
+            Source Airport
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DetailBooking.Flight.DepartureAirport.AirportName)
+        </dd>
+        <dt class = "col-sm-2">
+            Source City
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DetailBooking.Flight.DepartureAirport.City)
+        </dd>
+        <dt class = "col-sm-2">
+            Source Country
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DetailBooking.Flight.DepartureAirport.Country)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DetailBooking.Flight.DepartureTime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DetailBooking.Flight.DepartureTime)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DetailBooking.Flight.ArrivalTime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DetailBooking.Flight.ArrivalTime)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DetailBooking.Passenger.FirstName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DetailBooking.Passenger.FirstName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DetailBooking.Passenger.LastName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DetailBooking.Passenger.LastName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DetailBooking.Passenger.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DetailBooking.Passenger.Email)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="CustomerBookings">Back to Your Bookings</a>
+</div>
+<div>
+    @Html.ActionLink("Cancel This Booking", "CancelBooking", new { id = Model.DetailBooking.BookingId }) 
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

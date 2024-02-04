@@ -1,0 +1,65 @@
+@{
+    ViewBag.Title = "Air-Yan Home";
+}
+
+<div class="jumbotron">
+    <h1>Welcome to Air-Yan! @ViewBag.Username</h1>
+    <p>
+    <h3>Your Digital Travel Companion.</h3>
+    </p>
+    <p>What would you like to do?</p>
+    <div>
+        @* <span style="margin-top: 30px;">
+            <a asp-controller="Booking" asp-action="CustomerBookings" class="btn btn-primary">Check Bookings</a>
+        </span> *@
+        <span style="margin-top: 30px;">
+            <a asp-controller="Booking" asp-action="CustomerBookingsApi" class="btn btn-primary">Check Bookings with API</a>
+        </span>
+        @* <span style="margin-left: 100px; margin-top: 30px">
+            <a asp-controller="Passenger" asp-action="AddPassengers" class="btn btn-success">Book New Flight</a>
+        </span> *@
+        <span style="margin-left: 100px; margin-top: 30px">
+            <a asp-controller="Passenger" asp-action="AddPassengersApi" class="btn btn-success">Book New Flight with API</a>
+        </span>
+        
+    </div>
+    @if (@ViewBag.Username == "AdminUser")
+    {
+        <div style="margin-top: 30px">
+            <span>
+                <a asp-controller="Booking" asp-action="ShowBookingsApi" class="btn btn-primary">View All Bookings with API</a>
+            </span>
+            <span style="margin-left: 100px">
+                <a asp-controller="Passenger" asp-action="ShowPassengersApi" class="btn btn-success">View All Passengers with API</a>
+            </span>
+        </div>
+        <div style="margin-top: 30px">
+            <span>
+                <a asp-controller="Booking" asp-action="Index" class="btn btn-primary">View All Flights with API</a>
+            </span>
+            <span style="margin-left: 100px;">
+                <a asp-controller="Login" asp-action="ViewAllAccounts" class="btn btn-success">View All Accounts with API</a>
+            </span>
+        </div>
+
+    }
+
+</div>
+
+<div class="row" style="margin-top: 220px;">
+    <div class="col-md-4">
+        <h2>Search Flights</h2>
+        <p>Find and book your desired flights quickly.</p>
+        <!-- Add more content or functionality here -->
+    </div>
+    <div class="col-md-4">
+        <h2>Manage Bookings</h2>
+        <p>View and manage your booked flights easily.</p>
+        <!-- Add more content or functionality here -->
+    </div>
+    <div class="col-md-4">
+        <h2>Contact Us</h2>
+        <p>Have questions? Reach out to our customer support.</p>
+        <!-- Add more content or functionality here -->
+    </div>
+</div>

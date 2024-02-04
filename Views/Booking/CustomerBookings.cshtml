@@ -1,0 +1,55 @@
+@model FlightBooking.Models.CustomerBookingsViewModel
+
+@{
+    ViewData["Title"] = "Customer Bookings";
+}
+
+<h1>Check Your Bookings</h1>
+
+<form asp-action="CustomerBookings" asp-controller="Booking" method="post">
+    <div class="form-group">
+        <label asp-for="EmailAddress">Enter Email Address used to book Ticket:</label>
+        <input asp-for="EmailAddress" class="form-control" required>
+        <span asp-validation-for="EmailAddress" class="text-danger"></span>
+    </div>
+    <p></p>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+@if (Model.Bookings != null && Model.Bookings.Any())
+{
+    <h2>Bookings</h2>
+    <!-- Display booking information -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Booking ID</th>
+                <th>Source City</th>
+                <th>Destination City</th>
+                <th>Departure Time</th>
+                <th>Landing Time</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var booking in Model.Bookings)
+            {
+                <tr>
+                    <td>@booking.BookingId</td>
+                    <td>@booking.Flight?.DepartureAirport?.City</td>
+                    <td>@booking.Flight?.ArrivalAirport?.City</td>
+                    <td>@booking.Flight?.DepartureTime</td>
+                    <td>@booking.Flight?.ArrivalTime</td>
+                    <td>@Html.ActionLink("Show Details", "Details", new { id = booking.BookingId }) </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else if (Model.Passengers != null && Model.Bookings==null)
+{
+    <p>No bookings found for the specified email address.</p>
+}
+
+
+<a asp-controller = "Home" asp-action="Lego">Back to Home</a>

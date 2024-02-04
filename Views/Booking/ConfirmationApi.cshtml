@@ -1,0 +1,56 @@
+@model FlightBooking.Models.AryanFlight
+
+@{
+    ViewData["Title"] = "Confirmation";
+}
+
+<h1>Confirmation using Apis</h1>
+
+<h4>Your Ticket Details</h4>
+<hr />
+<div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Source</th>
+                    <th>Source Airport</th>
+                    <th>Destination</th>
+                    <th>Destination Airport</th>
+                    <th>Departure Time</th>
+                    <th>Arrival Time</th>
+                    <th>Airline</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                        <td>@Model.DepartureAirport?.City</td>
+                        <td>@Model.DepartureAirport?.AirportName</td>
+                        <td>@Model.ArrivalAirport?.City</td>
+                        <td>@Model.ArrivalAirport?.AirportName</td>
+                        <td>@Model.DepartureTime</td>
+                        <td>@Model.ArrivalTime</td>
+                        <td>@Model.AirlineName</td>
+                    </tr>
+            </tbody>
+        </table>
+    </div>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ConfirmationApi" method = "post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <input type="hidden" asp-for="FlightId" />
+                <input type="submit" value="Book This Flight" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

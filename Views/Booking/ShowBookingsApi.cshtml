@@ -1,0 +1,33 @@
+@model IEnumerable<FlightBooking.Models.AryanBooking>
+
+@{
+    ViewData["Title"] = "Show Bookings";
+}
+
+<h1>Show Bookings with api</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Booking Id</th>
+            <th>Flight</th>
+            <th>Departure Airport</th>
+            <th>Arrival Airport</th>
+            <th>Booking Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var booking in Model)
+        {
+            <tr>
+                <td>@booking.BookingId</td>
+                <td>@(booking.Flight != null ? booking.Flight.AirlineName : "N/A")</td>
+                <td>@(booking.Flight != null && booking.Flight.DepartureAirport != null ? booking.Flight.DepartureAirport.AirportName : "N/A")</td>
+                <td>@(booking.Flight != null && booking.Flight.ArrivalAirport != null ? booking.Flight.ArrivalAirport.AirportName : "N/A")</td>
+                <td>@booking.BookingDate</td>
+                <td>@Html.ActionLink("Details", "DetailsApi", new { id = booking.BookingId }) </td>
+            </tr>
+        }
+    </tbody>
+</table>

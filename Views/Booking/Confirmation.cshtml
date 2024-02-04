@@ -1,0 +1,56 @@
+@model FlightBooking.Models.ConfirmationViewModel
+
+@{
+    ViewData["Title"] = "Confirmation";
+}
+
+<h1>Confirmation</h1>
+
+<h4>Your Ticket Details</h4>
+<hr />
+<div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Source</th>
+                    <th>Source Airport</th>
+                    <th>Destination</th>
+                    <th>Destination Airport</th>
+                    <th>Departure Time</th>
+                    <th>Arrival Time</th>
+                    <th>Airline</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                        <td>@Model.FlightDetails?.DepartureAirport?.City</td>
+                        <td>@Model.FlightDetails?.DepartureAirport?.AirportName</td>
+                        <td>@Model.FlightDetails?.ArrivalAirport?.City</td>
+                        <td>@Model.FlightDetails?.ArrivalAirport?.AirportName</td>
+                        <td>@Model.FlightDetails?.DepartureTime</td>
+                        <td>@Model.FlightDetails?.ArrivalTime</td>
+                        <td>@Model.FlightDetails?.AirlineName</td>
+                    </tr>
+            </tbody>
+        </table>
+    </div>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Confirmation" method = "post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <input type="hidden" asp-for="FlightDetails.FlightId" />
+                <input type="submit" value="Book This Flight" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

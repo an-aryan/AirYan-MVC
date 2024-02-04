@@ -1,0 +1,56 @@
+@model IEnumerable<FlightBooking.Models.AryanBooking>
+
+@{
+    ViewData["Title"] = "ShowBookings";
+}
+
+<h1>Showing All Bookings</h1>
+
+<p>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BookingId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Flight.DepartureAirport)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Flight.DepartureTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Flight.ArrivalAirport)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Flight.ArrivalTime)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookingId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Flight.DepartureAirport.AirportName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Flight.DepartureTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Flight.ArrivalAirport.AirportName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Flight.ArrivalTime)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.BookingId }) |
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

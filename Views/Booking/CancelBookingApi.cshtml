@@ -1,0 +1,132 @@
+@model FlightBooking.Models.AryanBooking
+
+@{
+    ViewData["Title"] = "CancelBooking";
+}
+
+<h1>Cancel Your Booking</h1>
+
+<h4>Sorry to see you go ;(</h4>
+<hr />
+<div>
+    <h4>Your Booking details</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BookingId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BookingId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Flight.AirlineName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Flight.AirlineName)
+        </dd>
+        <dt class = "col-sm-2">
+            Destination Airport
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Flight.ArrivalAirport.AirportName)
+        </dd>
+        <dt class = "col-sm-2">
+            Destination City
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Flight.ArrivalAirport.City)
+        </dd>
+        <dt class = "col-sm-2">
+            Destination Country
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Flight.ArrivalAirport.Country)
+        </dd>
+        <dt class = "col-sm-2">
+            Source Airport
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Flight.DepartureAirport.AirportName)
+        </dd>
+        <dt class = "col-sm-2">
+            Source City
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Flight.DepartureAirport.City)
+        </dd>
+        <dt class = "col-sm-2">
+            Source Country
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Flight.DepartureAirport.Country)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Flight.DepartureTime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Flight.DepartureTime)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Flight.ArrivalTime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Flight.ArrivalTime)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Passenger.FirstName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Passenger.FirstName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Passenger.LastName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Passenger.LastName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Passenger.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Passenger.Email)
+        </dd>
+    </dl>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CancelBookingApi" method = "post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                @* <label asp-for="BookingId" class="control-label"></label> *@
+                <input type="hidden" asp-for="BookingId" class="form-control" />
+                <span asp-validation-for="BookingId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @* <label asp-for="FlightId" class="control-label"></label> *@
+                <input type="hidden" asp-for="FlightId" class="form-control" />
+                <span asp-validation-for="FlightId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @* <label asp-for="PassengerId" class="control-label"></label> *@
+                <input type="hidden" asp-for="PassengerId" class="form-control" />
+                <span asp-validation-for="PassengerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @* <label asp-for="BookingDate" class="control-label"></label> *@
+                <input type = "hidden" asp-for="BookingDate" class="form-control" />
+                <span asp-validation-for="BookingDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Cancel Booking" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Lego">Back to Homepage</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

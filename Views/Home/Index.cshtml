@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Air-Yan Home";
+}
+
+<div class="jumbotron">
+    <h1>Welcome to Air-Yan!</h1>
+    <p><h3>Your Digital Travel Companion.<h3></p>
+    <p style="margin-top: 50px;">
+        @Html.ActionLink("Become a member to start your journey", "Login", "Login", null, new { @class = "btn btn-primary btn-lg" })
+    </p>
+    <p style="margin-top: 50px;">
+        @Html.ActionLink("Try our API journey", "LoginApi", "Login", null, new { @class = "btn btn-primary btn-lg" })
+    </p>
+</div>
+
+
+<div class="row" style = "margin-top: 300px;">
+    <div class="col-md-4">
+        <h2>Search Flights</h2>
+        <p>Find and book your desired flights quickly.</p>
+        <!-- Add more content or functionality here -->
+    </div>
+    <div class="col-md-4">
+        <h2>Manage Bookings</h2>
+        <p>View and manage your booked flights easily.</p>
+        <!-- Add more content or functionality here -->
+    </div>
+    <div class="col-md-4">
+        <h2>Contact Us</h2>
+        <p>Have questions? Call us at +91-7696308932.</p>
+        <!-- Add more content or functionality here -->
+    </div>
+</div>
+

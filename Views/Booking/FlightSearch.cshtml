@@ -1,0 +1,21 @@
+@model FlightBooking.Models.FlightSearchViewModel
+
+@{
+    ViewData["Title"] = "Flight Search";
+}
+
+<h1>Flight Search</h1>
+
+<form asp-action="FlightSearch" method="post">
+    <div class="form-group">
+        <label for="sourceAirportId">Source Airport:</label>
+        <select asp-for="SourceAirportId" class="form-control" asp-items="@ViewBag.Airports"></select>
+    </div>
+
+    <div class="form-group" style="margin-bottom: 30px;">
+        <label for="destinationAirportId">Destination Airport:</label>
+        <select asp-for="DestinationAirportId" class="form-control" asp-items="@ViewBag.Airports"></select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Search Flights</button>
+</form>

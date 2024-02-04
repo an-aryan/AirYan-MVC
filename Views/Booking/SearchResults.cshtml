@@ -1,0 +1,45 @@
+@model List<FlightBooking.Models.AryanFlight>
+
+@{
+    ViewData["Title"] = "Search Results";
+}
+
+<h1>Search Results</h1>
+<h4>We Found These Flights for You!!</h4>
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Action</th>
+                <th>Flight ID</th>
+                <th>Departure Airport</th>
+                <th>Arrival Airport</th>
+                <th>Departure Time</th>
+                <th>Arrival Time</th>
+                <th>Airline Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var flight in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink("Book This Flight", "Confirmation", new { fid = flight.FlightId })</td>
+                    <td>@flight.FlightId</td>
+                    <td>@flight.DepartureAirport?.City</td>
+                    <td>@flight.ArrivalAirport?.City</td>
+                    <td>@flight.DepartureTime</td>
+                    <td>@flight.ArrivalTime</td>
+                    <td>@flight.AirlineName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No flights found for the selected criteria.</p>
+    <div style="margin-top: 10px;">
+        <a asp-controller="Booking" asp-action="FlightSearch" class="btn btn-success">Back to Flight Search</a>
+    </div>
+}
